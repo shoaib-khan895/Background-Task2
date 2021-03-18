@@ -1,13 +1,10 @@
 package com.example.androidbootcamp2021
 
 import android.app.job.JobInfo
-import android.app.job.JobParameters
 import android.app.job.JobScheduler
 import android.content.ComponentName
 import android.content.Context
 import android.os.Bundle
-import android.os.Handler
-import android.os.Message
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -57,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         WorkManager.getInstance(this).getWorkInfoByIdLiveData(request.id)
             .observe(this, Observer {
                 val status = it.state.name
-                Toast.makeText(this, "$status", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, status, Toast.LENGTH_SHORT).show()
             })
     }
 

@@ -4,12 +4,9 @@ import android.app.job.JobParameters
 import android.app.job.JobService
 import android.os.Handler
 import android.os.Message
-import android.util.Log
 import android.widget.Toast
 
 class MyJobScheduler: JobService() {
-
-    private val TAG = "MyJobScheduler"
 
     override fun onStopJob(params: JobParameters?): Boolean {
         mJobHandler.removeMessages(MainActivity.jobId)
@@ -22,9 +19,11 @@ class MyJobScheduler: JobService() {
     }
 
     private val mJobHandler: Handler = Handler(object : Handler.Callback {
-        override fun handleMessage(msg: Message): Boolean {
+        override fun handleMessage(msg: Message): Boolean
+        {
             Toast.makeText(applicationContext, "Job running", Toast.LENGTH_SHORT).show()
-            for (i in 1..10) {
+            for (i in 1..10)
+            {
                 Toast.makeText(applicationContext, "Running job $i", Toast.LENGTH_SHORT).show()
             }
             jobFinished(msg.obj as JobParameters, false)
